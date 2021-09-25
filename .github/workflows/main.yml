@@ -33,5 +33,5 @@ jobs:
       - name: Code Climate Test Reporter
         uses: aktions/codeclimate-test-reporter@v1
         with:
-          codeclimate-test-reporter-id: e77471016a1d80f1343efe2e017b3643975bf8104204e080bf461fc409226a6a
+          codeclimate-test-reporter-id: ${{ secrets.TEST_REPORTER_ID }}
           command: after-build -t lcov -d
