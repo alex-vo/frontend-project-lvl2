@@ -1,4 +1,4 @@
-import fs from 'fs';
+import parseFiles from './parsers.js';
 
 const getNthLine = (n, keys, json) => {
   if (n >= keys.length) {
@@ -9,7 +9,7 @@ const getNthLine = (n, keys, json) => {
   return `${key}: ${json[key]}`;
 };
 
-const mergeJSONs = (json1, json2) => {
+const mergeObjects = (json1, json2) => {
   const keys1 = Object.keys(json1).sort();
   const keys2 = Object.keys(json2).sort();
   const result = ['{'];
@@ -35,19 +35,10 @@ const mergeJSONs = (json1, json2) => {
   return result.join('\n');
 };
 
-const isJSONFilePath = (filePath) => filePath && filePath.endsWith('json');
-
-const extractJSON = (filePath) => JSON.parse(fs.readFileSync(filePath).toString());
-
 const genDiff = (filePath1, filePath2) => {
-  if (!isJSONFilePath(filePath1) || !isJSONFilePath(filePath2)) {
-    throw Error(`Expected both args to be .json files. Got ${filePath1}, ${filePath2}.`);
-  }
+  const [object1, object2] = parseFiles(filePath1, filePath2);
 
-  const json1 = extractJSON(filePath1);
-  const json2 = extractJSON(filePath2);
-
-  return mergeJSONs(json1, json2);
+  return mergeObjects(object1, object2);
 };
 
 export default genDiff;
