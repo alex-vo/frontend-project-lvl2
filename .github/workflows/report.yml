@@ -36,5 +36,5 @@ jobs:
         uses: icalia-actions/cc-test-reporter-base@v0.0.2
         with:
           # The commands given to the test reporter
-          command: after-build -p coverage --coverage-input-type clover
+          command: after-build -p github.com/alex-vo/frontend-project-lvl2 --coverage-input-type clover
     
