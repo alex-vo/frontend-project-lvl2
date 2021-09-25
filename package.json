@@ -23,5 +23,8 @@
   "bin": {
     "gendiff": "bin/run-gendiff.js"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^14.2.1"
+  }
 }

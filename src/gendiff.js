@@ -19,26 +19,33 @@ const mergeJSONs = (json1, json2) => {
     let resultingString;
     if (!file1String || file1String > file2String) {
       resultingString = `  + ${file2String}`;
-      j++;
+      j += 1;
     } else if (!file2String || file1String < file2String) {
       resultingString = `  - ${file1String}`;
-      i++;
+      i += 1;
     } else {
       resultingString = `    ${file1String}`;
-      i++;
-      j++;
+      i += 1;
+      j += 1;
     }
     result.push(resultingString);
   }
   result.push('}');
 
   return result.join('\n');
-}
+};
+
+const isJSONFilePath = (filePath) => filePath && filePath.endsWith('json');
+
+const extractJSON = (filePath) => JSON.parse(fs.readFileSync(filePath).toString());
 
 const genDiff = (filePath1, filePath2) => {
-  //todo throw error if not json
-  const json1 = JSON.parse(fs.readFileSync(filePath1).toString());
-  const json2 = JSON.parse(fs.readFileSync(filePath2).toString());
+  if (!isJSONFilePath(filePath1) || !isJSONFilePath(filePath2)) {
+    throw Error(`Expected both args to be .json files. Got ${filePath1}, ${filePath2}.`);
+  }
+
+  const json1 = extractJSON(filePath1);
+  const json2 = extractJSON(filePath2);
 
   return mergeJSONs(json1, json2);
 };
