@@ -4,7 +4,7 @@ import path from 'path';
 
 const extractFileContent = (filePath) => fs.readFileSync(filePath).toString();
 
-function extractObject(rawData, extension) {
+const extractObject = ({ rawData, extension, filePath }) => {
   switch (extension) {
     case '.json':
       return JSON.parse(rawData);
@@ -12,34 +12,16 @@ function extractObject(rawData, extension) {
     case '.yaml':
       return yaml.load(rawData);
     default:
-      throw Error(`Unsupported extension '${extension}'.`);
+      throw Error(`Unsupported extension '${extension}' for file '${filePath}'.`);
   }
-}
-
-const isJson = (extension) => extension && extension.toLowerCase() === '.json';
-
-const isYaml = (extension) => extension && (extension.toLowerCase() === '.yml' || extension.toLowerCase() === '.yaml');
-
-const areCompatibleExtensions = (extension1, extension2) =>
-  (isJson(extension1) && isJson(extension2))
-  || (isYaml(extension1) && isYaml(extension2));
-
-const checkExtensions = (files, firstFileExtension) => files.every(({ extension }) => {
-  if (areCompatibleExtensions(extension, firstFileExtension)) {
-    return true;
-  }
-
-  throw Error(`Incompatible extensions '${extension}' and '${firstFileExtension}'.`);
-});
-
-const parseFiles = (...filePaths) => {
-  const files = filePaths.map((filePath) => ({ filePath, extension: path.extname(filePath) }));
-
-  checkExtensions(files, files[0].extension);
-
-  return files
-    .map(({ filePath, extension }) => ({ rawData: extractFileContent(filePath), extension }))
-    .map(({ rawData, extension }) => extractObject(rawData, extension));
 };
+
+const parseFiles = (...filePaths) => filePaths
+  .map((filePath) => ({
+    filePath,
+    rawData: extractFileContent(filePath),
+    extension: path.extname(filePath),
+  }))
+  .map((file) => extractObject(file));
 
 export default parseFiles;
