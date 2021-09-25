@@ -2,7 +2,7 @@ import fs from 'fs';
 import yaml from 'js-yaml';
 import path from 'path';
 
-const extractFileContent = (filePath) => fs.readFileSync(filePath).toString();
+const extractFileData = (filePath) => fs.readFileSync(filePath).toString();
 
 const extractObject = ({ rawData, extension, filePath }) => {
   switch (extension) {
@@ -19,7 +19,7 @@ const extractObject = ({ rawData, extension, filePath }) => {
 const parseFiles = (...filePaths) => filePaths
   .map((filePath) => ({
     filePath,
-    rawData: extractFileContent(filePath),
+    rawData: extractFileData(filePath),
     extension: path.extname(filePath),
   }))
   .map((file) => extractObject(file));
