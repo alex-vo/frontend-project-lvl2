@@ -34,4 +34,4 @@ jobs:
         uses: aktions/codeclimate-test-reporter@v1
         with:
           codeclimate-test-reporter-id: e77471016a1d80f1343efe2e017b3643975bf8104204e080bf461fc409226a6a
-          command: after-build -t clover -p "/home/runner/work/frontend-project-lvl2/frontend-project-lvl2/coverage" -d
+          command: after-build -t lcov -d
