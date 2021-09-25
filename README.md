@@ -7,3 +7,9 @@ A command line tool to show differences between 2 json file contents.
 
 ### gendiff demo
 [![asciicast](https://asciinema.org/a/437731.svg)](https://asciinema.org/a/437731)
+
+### eslint
+[![lint](https://github.com/alex-vo/frontend-project-lvl2/actions/workflows/main.yml/badge.svg)](https://github.com/alex-vo/frontend-project-lvl2/actions/workflows/main.yml)
+
+### codeclimate
+[![Maintainability](https://api.codeclimate.com/v1/badges/4ad77569eec6a1a0714f/maintainability)](https://codeclimate.com/github/alex-vo/frontend-project-lvl2/maintainability)
