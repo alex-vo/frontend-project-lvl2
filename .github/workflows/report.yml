@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: report
 
 # Controls when the workflow will run
 on:
@@ -36,5 +36,5 @@ jobs:
         uses: icalia-actions/cc-test-reporter-base@v0.0.2
         with:
           # The commands given to the test reporter
-          command: after-build
+          command: after-build --coverage-input-type clover
     
