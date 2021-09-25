@@ -27,13 +27,12 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: cd coverage
 
       # Runs a set of commands using the runners shell
       - name: Code Climate Test Reporter
         uses: aktions/codeclimate-test-reporter@v1
-        run: cd coverage && cc-test-reporter after-build -t clover
-#        with:
-#          codeclimate-test-reporter-id: e77471016a1d80f1343efe2e017b3643975bf8104204e080bf461fc409226a6a
-#          command: after-build -t clover -p coverage/
+        with:
+          codeclimate-test-reporter-id: e77471016a1d80f1343efe2e017b3643975bf8104204e080bf461fc409226a6a
+          command: after-build -t clover
     
