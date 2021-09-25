@@ -32,7 +32,7 @@ jobs:
         uses: aktions/codeclimate-test-reporter@v1
         with:
           codeclimate-test-reporter-id: a50c10cdf8f73cc2770cbc3bb2ae6f73a447853713e572fdcd9d49d8e89d9f6a
-          command: after-build --coverage-input-type clover
+          command: after-build --coverage-input-type clover -p coverage
 
 
       # Runs a set of commands using the runners shell
