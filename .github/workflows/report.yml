@@ -27,7 +27,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: cd coverage
+        run: make test && cd coverage
 
       # Runs a set of commands using the runners shell
       - name: Code Climate Test Reporter
