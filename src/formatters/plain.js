@@ -25,15 +25,10 @@ const diffItemToString = (diff, key, prefix) => {
 const plain = (diff, prefix) => {
   if (!diff || typeof diff !== 'object' || Array.isArray(diff)) return null;
 
-  let result = [];
-  for (const key of Object.keys(diff)) {
-    const str = diffItemToString(diff, key, prefix);
-    if (str) {
-      result = [...result, str];
-    }
-  }
-
-  return result.join('\n');
+  return Object.keys(diff)
+    .map((key) => diffItemToString(diff, key, prefix))
+    .filter((str) => !!str)
+    .join('\n');
 };
 
 export default (diff) => plain(diff, '');
