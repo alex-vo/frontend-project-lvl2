@@ -5,7 +5,7 @@ const stringify = (o, prefix) => {
   const result = Object.keys(o)
     .map((key) => `${prefix}    ${key}: ${stringify(o[key], `${prefix}    `)}`);
 
-  return `{\n${result.join('\n')}${prefix}\n}`;
+  return `{\n${result.join('\n')}\n${prefix}}`;
 };
 
 const formatKeyValue = (prefix, typeIndicator, key, value) => `${prefix}  ${typeIndicator} ${key}: ${value}`;
@@ -33,7 +33,7 @@ const stylish = (diff, prefix) => {
       }
     });
 
-  return `{\n${result.join('\n')}${prefix}\n}`;
+  return `{\n${result.join('\n')}\n${prefix}}`;
 };
 
 export default (diff) => stylish(diff, '');
