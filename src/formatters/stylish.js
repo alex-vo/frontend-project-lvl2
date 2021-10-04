@@ -2,11 +2,11 @@ const stringify = (o, prefix) => {
   if (!o || typeof o === 'string') return o;
   if (typeof o !== 'object' || Array.isArray(o)) return JSON.stringify(o);
 
-  const result = ['{'];
+  let result = ['{'];
   for (const key of Object.keys(o)) {
-    result.push(`${prefix}    ${key}: ${stringify(o[key], `${prefix}    `)}`);
+    result = [...result, `${prefix}    ${key}: ${stringify(o[key], `${prefix}    `)}`];
   }
-  result.push(`${prefix}}`);
+  result = [...result, `${prefix}}`];
 
   return result.join('\n');
 };
@@ -35,12 +35,12 @@ const diffItemToString = (diff, key, prefix) => {
 const stylish = (diff, prefix) => {
   if (!diff || typeof diff !== 'object' || Array.isArray(diff)) return stringify(diff);
 
-  const result = ['{'];
+  let result = ['{'];
   for (const key of Object.keys(diff)) {
     const str = diffItemToString(diff, key, prefix);
-    result.push(str);
+    result = [...result, str];
   }
-  result.push(`${prefix}}`);
+  result = [...result, `${prefix}}`];
   return result.join('\n');
 };
 

@@ -16,7 +16,7 @@ const extractObject = ({ rawData, extension, filePath }) => {
   }
 };
 
-const parseFiles = (...filePaths) => filePaths
+const parseFiles = (filePaths) => filePaths
   .map((filePath) => ({
     filePath,
     rawData: extractFileData(filePath),
