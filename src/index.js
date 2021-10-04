@@ -17,7 +17,7 @@ const getFormatter = (format) => {
   }
 };
 
-const genDiff = (filePath1, filePath2, format) => {
+const genDiff = (filePath1, filePath2, format = 'stylish') => {
   const [object1, object2] = parseFiles(filePath1, filePath2);
 
   const diff = generateDiff(object1, object2);
