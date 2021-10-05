@@ -6,7 +6,8 @@ const stringify = (o) => {
   return '[complex value]';
 };
 
-const plain = (diff, prefix) => diff.filter(({ type }) => type !== 'none')
+const plain = (diff, prefix) => diff
+  .filter(({ type }) => type !== 'none')
   .map((
     {
       key,

@@ -1,4 +1,5 @@
-const json = (diff, prefix) => diff.filter(({ type }) => type !== 'none')
+const json = (diff, prefix) => diff
+  .filter(({ type }) => type !== 'none')
   .flatMap((
     {
       key,

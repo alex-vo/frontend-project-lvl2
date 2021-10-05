@@ -2,7 +2,8 @@ import _ from 'lodash';
 
 const isNonArrayObject = (obj) => typeof obj === 'object' && !Array.isArray(obj);
 
-const generateDiff = (data1, data2) => _.sortBy(_.union([...Object.keys(data1), ...Object.keys(data2)]))
+const generateDiff = (data1, data2) => _
+  .sortBy(_.union([...Object.keys(data1), ...Object.keys(data2)]))
   .map((key) => {
     const data1Value = data1[key];
     const data2Value = data2[key];
