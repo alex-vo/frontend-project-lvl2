@@ -17,7 +17,9 @@ const generateDiff = (data1, data2) =>
         return { key, type: 'nested', newValue: generateDiff(data1Value, data2Value) };
       }
       if (!_.isEqual(data1Value, data2Value)) {
-        return { key, type: 'changed', oldValue: data1Value, newValue: data2Value };
+        return {
+          key, type: 'changed', oldValue: data1Value, newValue: data2Value,
+        };
       }
       return { key, type: 'none', newValue: data1Value };
     });

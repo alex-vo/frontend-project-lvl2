@@ -8,7 +8,14 @@ const stringify = (o) => {
 
 const plain = (diff, prefix) =>
   diff.filter(({ type }) => type !== 'none')
-    .map(({ key, type, oldValue, newValue }) => {
+    .map((
+      {
+        key,
+        type,
+        oldValue,
+        newValue,
+      },
+    ) => {
       switch (type) {
         case 'added':
           return `Property '${prefix}${key}' was added with value: ${stringify(newValue)}`;

@@ -1,6 +1,13 @@
 const json = (diff, prefix) =>
   diff.filter(({ type }) => type !== 'none')
-    .flatMap(({ key, type, oldValue, newValue }) => {
+    .flatMap((
+      {
+        key,
+        type,
+        oldValue,
+        newValue,
+      },
+    ) => {
       switch (type) {
         case 'added':
         case 'removed':
