@@ -8,10 +8,10 @@ lint:
 	@ npx eslint .
 
 test:
-	@ npm test
+	@ npm run test
 
 test-coverage:
-	@ npm test-coverage
+	@ npm run test-coverage
 
 publish:
 	@ npm link
