@@ -1,7 +1,7 @@
 import parseData from './parsers.js';
 import generateDiff from './diffGenerator.js';
 import readFiles from './files.js';
-import getFormatter from './formatters';
+import getFormatter from './formatters/index.js';
 
 const genDiff = (filePath1, filePath2, format = 'stylish') => {
   // todo which option is better?
