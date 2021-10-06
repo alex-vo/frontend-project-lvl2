@@ -27,7 +27,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Clean install, run tests, run eslint
-        run: make clean-install test lint
+        run: make clean-install test-coverage lint
 
       # Runs a set of commands using the runners shell
       - name: Code Climate Test Reporter
