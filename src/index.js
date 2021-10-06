@@ -4,7 +4,7 @@ import readFiles from './files.js';
 import getFormatter from './formatters';
 
 const genDiff = (filePath1, filePath2, format = 'stylish') => {
-  //todo which option is better?
+  // todo which option is better?
   const [object1, object2] = readFiles([filePath1, filePath2])
     .map((fileData) => parseData(fileData));
   // const [file1Data, file2Data] = readFiles([filePath1, filePath2]);

@@ -10,7 +10,7 @@ const getExtension = (filePath) => {
   }
 
   return fullExtension.substr(1, fullExtension.length - 1);
-}
+};
 
 const readFiles = (filePaths) => filePaths
   .map((filePath) => ({
