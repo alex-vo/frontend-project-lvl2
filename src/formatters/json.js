@@ -4,8 +4,9 @@ const json = (diff, prefix) => diff
     {
       key,
       type,
-      oldValue,
-      newValue,
+      value1,
+      value2,
+      value,
     },
   ) => {
     switch (type) {
@@ -15,11 +16,12 @@ const json = (diff, prefix) => diff
         return {
           property: `${prefix}${key}`,
           type,
-          newValue,
-          oldValue,
+          value1,
+          value2,
+          value,
         };
       case 'nested':
-        return json(newValue, `${prefix}${key}.`);
+        return json(value, `${prefix}${key}.`);
       default:
         throw Error(`Unexpected diff type '${type}'.`);
     }

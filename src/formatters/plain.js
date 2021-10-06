@@ -12,19 +12,20 @@ const plain = (diff, prefix) => diff
     {
       key,
       type,
-      oldValue,
-      newValue,
+      value1,
+      value2,
+      value,
     },
   ) => {
     switch (type) {
       case 'added':
-        return `Property '${prefix}${key}' was added with value: ${stringify(newValue)}`;
+        return `Property '${prefix}${key}' was added with value: ${stringify(value)}`;
       case 'removed':
         return `Property '${prefix}${key}' was removed`;
       case 'nested':
-        return plain(newValue, `${prefix}${key}.`);
+        return plain(value, `${prefix}${key}.`);
       case 'changed':
-        return `Property '${prefix}${key}' was updated. From ${stringify(oldValue)} to ${stringify(newValue)}`;
+        return `Property '${prefix}${key}' was updated. From ${stringify(value1)} to ${stringify(value2)}`;
       default:
         throw Error(`Unexpected diff type '${type}'.`);
     }

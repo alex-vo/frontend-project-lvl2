@@ -1,3 +1,6 @@
+install:
+	@ npm i
+
 clean-install:
 	@ npm ci
 
@@ -6,3 +9,9 @@ lint:
 
 test:
 	@ npm test
+
+test-coverage:
+	@ npm test-coverage
+
+publish:
+	@ npm link

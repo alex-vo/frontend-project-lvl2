@@ -1,10 +1,11 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/alex-vo/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/alex-vo/frontend-project-lvl2/actions)",
+  "description": "Command line tool for generating difference between json and yaml files",
   "main": "src/index.js",
   "scripts": {
-    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage"
+    "test": " npx jest",
+    "test-coverage": "npx jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -16,15 +17,15 @@
     "url": "https://github.com/alex-vo/frontend-project-lvl2/issues"
   },
   "homepage": "https://github.com/alex-vo/frontend-project-lvl2#readme",
+  "bin": {
+    "gendiff": "bin/genDiff.js"
+  },
+  "type": "module",
   "dependencies": {
     "commander": "^8.2.0",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
-  "bin": {
-    "gendiff": "bin/run-gendiff.js"
-  },
-  "type": "module",
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",

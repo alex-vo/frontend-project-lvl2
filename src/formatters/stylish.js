@@ -16,23 +16,24 @@ const stylish = (diff, prefix) => {
       {
         key,
         type,
-        oldValue,
-        newValue,
+        value1,
+        value2,
+        value,
       },
     ) => {
       switch (type) {
         case 'added':
-          return formatKeyValue(prefix, '+', key, stringify(newValue, `${prefix}    `));
+          return formatKeyValue(prefix, '+', key, stringify(value, `${prefix}    `));
         case 'removed':
-          return formatKeyValue(prefix, '-', key, stringify(oldValue, `${prefix}    `));
+          return formatKeyValue(prefix, '-', key, stringify(value, `${prefix}    `));
         case 'nested':
-          return formatKeyValue(prefix, ' ', key, stylish(newValue, `${prefix}    `));
+          return formatKeyValue(prefix, ' ', key, stylish(value, `${prefix}    `));
         case 'none':
-          return formatKeyValue(prefix, ' ', key, stringify(newValue, `${prefix}    `));
+          return formatKeyValue(prefix, ' ', key, stringify(value, `${prefix}    `));
         case 'changed':
           return [
-            formatKeyValue(prefix, '-', key, stringify(oldValue, `${prefix}    `)),
-            formatKeyValue(prefix, '+', key, stringify(newValue, `${prefix}    `)),
+            formatKeyValue(prefix, '-', key, stringify(value1, `${prefix}    `)),
+            formatKeyValue(prefix, '+', key, stringify(value2, `${prefix}    `)),
           ].join('\n');
         default:
           throw Error(`Unexpected diff type '${type}'.`);

@@ -12,7 +12,7 @@ program
   .helpOption('-h, --help', 'output usage information')
   .usage('[options] <filepath1> <filepath2>')
   .arguments('<filepath1> <filepath2>')
-  .action((filepath1, filepath2, { format }) => {
+  .action((filepath1, filepath2, { format = 'stylish'}) => {
     console.log(genDiff(filepath1, filepath2, format));
   });
 

@@ -1,24 +1,15 @@
-import parseFiles from './parsers.js';
+import parseData from './parsers.js';
 import generateDiff from './diffGenerator.js';
-import stylish from './formatters/stylish.js';
-import plain from './formatters/plain.js';
-import json from './formatters/json.js';
-
-const getFormatter = (format) => {
-  switch (format) {
-    case 'stylish':
-      return stylish;
-    case 'plain':
-      return plain;
-    case 'json':
-      return json;
-    default:
-      throw Error(`Unrecognized format ${format}.`);
-  }
-};
+import readFiles from './files.js';
+import getFormatter from './formatters';
 
 const genDiff = (filePath1, filePath2, format = 'stylish') => {
-  const [object1, object2] = parseFiles([filePath1, filePath2]);
+  //todo which option is better?
+  const [object1, object2] = readFiles([filePath1, filePath2])
+    .map((fileData) => parseData(fileData));
+  // const [file1Data, file2Data] = readFiles([filePath1, filePath2]);
+  // const object1 = parseData(file1Data);
+  // const object2 = parseData(file2Data);
 
   const diff = generateDiff(object1, object2);
   return getFormatter(format)(diff);
