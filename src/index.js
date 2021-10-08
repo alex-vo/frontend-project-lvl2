@@ -1,7 +1,7 @@
 import parseData from './parsers.js';
 import generateDiff from './generateDiff.js';
 import readFile from './files.js';
-import formatDiff from './formatters';
+import formatDiff from './formatters/index.js';
 
 const genDiff = (filePath1, filePath2, format = 'stylish') => {
   const file1Data = readFile(filePath1);
