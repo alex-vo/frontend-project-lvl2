@@ -3,7 +3,7 @@ import path from 'path';
 
 const extractFileData = (filePath) => fs.readFileSync(filePath, { encoding: 'utf-8' });
 
-const getExtension = (filePath) => {
+const getType = (filePath) => {
   const fullExtension = path.extname(filePath);
   if (!fullExtension) {
     return fullExtension;
@@ -12,10 +12,9 @@ const getExtension = (filePath) => {
   return fullExtension.substr(1, fullExtension.length - 1);
 };
 
-const readFiles = (filePaths) => filePaths
-  .map((filePath) => ({
-    rawData: extractFileData(filePath),
-    extension: getExtension(filePath),
-  }));
+const readFile = (filePath) => ({
+  rawData: extractFileData(filePath),
+  type: getType(filePath),
+});
 
-export default readFiles;
+export default readFile;

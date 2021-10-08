@@ -7,7 +7,7 @@ const stringify = (o) => {
 };
 
 const plain = (diff, prefix) => diff
-  .filter(({ type }) => type !== 'none')
+  .filter(({ type }) => type !== 'unchanged')
   .map((
     {
       key,

@@ -4,7 +4,7 @@
   "description": "Command line tool for generating difference between json and yaml files",
   "main": "src/index.js",
   "scripts": {
-    "test": " npx jest",
+    "test": "npx jest",
     "test-coverage": "npx jest --coverage"
   },
   "repository": {

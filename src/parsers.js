@@ -1,15 +1,16 @@
 import yaml from 'js-yaml';
+import _ from 'lodash';
 
-const parseData = ({ rawData, extension }) => {
-  switch (extension) {
-    case 'json':
-      return JSON.parse(rawData);
-    case 'yml':
-    case 'yaml':
-      return yaml.load(rawData);
-    default:
-      throw Error(`Unsupported extension '${extension}'.`);
-  }
+const parsersByType = {
+  json: JSON.parse,
+  yml: yaml.load,
+  yaml: yaml.load,
 };
 
-export default parseData;
+export default ({ rawData, type }) => {
+  if (!_.has(parsersByType, type)) {
+    throw Error(`Unsupported type '${type}'.`);
+  }
+
+  return parsersByType[type](rawData);
+};

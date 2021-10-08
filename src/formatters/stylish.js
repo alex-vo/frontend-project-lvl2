@@ -28,7 +28,7 @@ const stylish = (diff, prefix) => {
           return formatKeyValue(prefix, '-', key, stringify(value, `${prefix}    `));
         case 'nested':
           return formatKeyValue(prefix, ' ', key, stylish(value, `${prefix}    `));
-        case 'none':
+        case 'unchanged':
           return formatKeyValue(prefix, ' ', key, stringify(value, `${prefix}    `));
         case 'changed':
           return [

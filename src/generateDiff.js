@@ -21,7 +21,7 @@ const generateDiff = (data1, data2) => {
           key, type: 'changed', value1: data1Value, value2: data2Value,
         };
       }
-      return { key, type: 'none', value: data1Value };
+      return { key, type: 'unchanged', value: data1Value };
     });
 };
 
